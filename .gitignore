@@ -1,4 +1,4 @@
-.dot.env
+.dev.env
 .env
 node_modules
 dist
