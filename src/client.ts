@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits } from 'discord.js';
-import { registerEvents } from './utils/index.js';
-import Events from './events/index.js';
-import Keys from './keys.js';
+import { registerEvents } from './utils/events.js';
+import { Events } from './events/index.js';
+import { Keys } from './config.js';
 
 const client = new Client({
     intents: [
@@ -14,8 +14,9 @@ const client = new Client({
 
 registerEvents(client, Events);
 
-client.login(Keys.clientToken)
-    .catch((err) => {
-        console.error('[Login Error', err);
-        process.exit(1);
-});
+try {
+    await client.login(Keys.clientToken)
+} catch (err: unknown) {
+    console.error('[Login Error', err);
+    process.exit(1);
+}

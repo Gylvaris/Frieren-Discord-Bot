@@ -1,7 +1,7 @@
-import { event, Events} from '../utils/index.js';
+import { event, Events } from '../utils/events.js';
 
-export default event(Events.MessageCreate, ({ log }, msg) => {
+export const message = event(Events.MessageCreate, async ({ log }, msg) => {
     if (msg.content === 'ping') {
-        return msg.reply('pong');
+        return msg.reply('Weź spierdalaj..');
     }
 });

@@ -1,8 +1,8 @@
-import { Event } from '../utils/index.js'
-import message from './message.js';
-import ready from './ready.js';
+import { Event } from '../utils/events.js'
+import { message } from './message.js';
+import { ready } from './ready.js';
 
-export default [
+export const Events: Event[] = [
     ready,
     message,
 ] as Event[];

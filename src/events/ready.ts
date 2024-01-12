@@ -1,5 +1,5 @@
-import { event, Events} from '../utils/index.js';
+import { event, Events } from '../utils/events.js';
 
-export default event(Events.ClientReady, ({ log }, client) => {
+export const ready = event(Events.ClientReady, ({ log }, client) => {
     return log(`Logged in as ${client.user.username}!`)
 })
