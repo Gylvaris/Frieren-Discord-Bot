@@ -1,13 +1,14 @@
 {
   "name": "frieren",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Discord bot written in TypeScript (Learning project)",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
   "scripts": {
     "start": "node .",
     "dev": "pnpm run build && pnpm run start",
-    "build": "tsc"
+    "build": "tsc",
+    "slash": "node ./dist/deploy-commands.js"
   },
   "keywords": [],
   "author": "Gylvaris",
