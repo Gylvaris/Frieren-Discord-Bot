@@ -5,14 +5,14 @@ import { Events } from './events/index.js';
 import { config } from './config.js';
 import { commands } from './commands/index.js';
 
-const client = new Client({
+export const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
     ],
-}) as Client & { commands: Collection<string, any> };
+}) as Client & { commands: Collection<string, any>, cooldowns: Collection<number, any> }
 
 client.commands = new Collection();
 for (const command of commands) {
@@ -23,30 +23,9 @@ for (const command of commands) {
     }
 }
 
+client.cooldowns = new Collection();
+
 registerEvents(client, Events);
-
-client.on(Eventy.InteractionCreate, async interaction => {
-    if (!interaction.isChatInputCommand()) return;
-
-    const clientWithCommands = interaction.client as Client & { commands: Collection<string, any> };
-    const command = clientWithCommands.commands.get(interaction.commandName);
-
-    if (!command) {
-        console.error(`No command matching ${interaction.commandName} was found.`);
-        return;
-    }
-
-    try {
-        await command.execute(interaction);
-    } catch (error) {
-        console.error(error);
-        if (interaction.replied || interaction.deferred) {
-            await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-        } else {
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-        }
-    }
-});
 
 try {
     await client.login(config.clientToken)
