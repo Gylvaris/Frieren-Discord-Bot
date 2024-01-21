@@ -6,7 +6,7 @@
   "exports": "./dist/index.js",
   "scripts": {
     "start": "node .",
-    "dev": "pnpm run build && pnpm run start",
+    "dev": "bun run build && bun run start",
     "build": "tsc",
     "slash": "node ./dist/deploy-commands.js"
   },
@@ -14,10 +14,9 @@
   "author": "Gylvaris",
   "license": "MIT",
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/node": "^20.10.6",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1",
-    "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },

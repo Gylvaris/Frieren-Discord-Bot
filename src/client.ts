@@ -1,5 +1,4 @@
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
-import { Events as Eventy } from 'discord.js';
 import { registerEvents } from './utils/events.js';
 import { Events } from './events/index.js';
 import { config } from './config.js';
