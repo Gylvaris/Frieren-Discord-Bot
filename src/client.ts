@@ -29,6 +29,6 @@ registerEvents(client, Events);
 try {
     await client.login(config.clientToken)
 } catch (err: unknown) {
-    console.error('[Login Error', err);
+    console.error('[Login Error]', err);
     process.exit(1);
 }

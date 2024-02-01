@@ -27,7 +27,7 @@ export function registerEvents(client: Client, events: Event[]): void {
     for (const { key, callback } of events) {
         client.on(key, (...args) => {
 
-            const log = console.log.bind(console, `[Event] ${key}`);
+            const log = console.log.bind(console, `[Event ${key}]`);
 
             try {
                 callback({ client, log }, ...args);
